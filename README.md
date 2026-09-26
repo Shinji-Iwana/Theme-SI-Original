@@ -19,7 +19,7 @@
 | `inc/enqueue.php` | CSS・JavaScript の読み込み（子テーマの `style.css` も読み込む） |
 | `inc/template-functions.php` | テンプレートで使う関数と、表示の調整 |
 | `inc/editor.php` | 管理画面の編集画面（旧エディタの書式・クイックタグ） |
-| `inc/blogos-connector.php` | BlogOS との連携（投稿メタ `_blogos_draft_id`） |
+| `inc/blogos-connector.php` | BlogOS との連携（投稿メタ `_blogos_draft_id`、編集案のプレビュー `POST /wp-json/blogos/v1/preview`） |
 | `*.php`（直下） | テンプレート |
 | `css/`・`js/`・`images/` | STINGER8 の CSS（normalize・Font Awesome 4.5）・JavaScript・画像 |
 
