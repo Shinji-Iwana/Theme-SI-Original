@@ -1,0 +1,55 @@
+/* ========================================
+   WordPress
+======================================== */
+
+.alignleft{
+    float:left;
+    margin-right:1rem;
+    margin-bottom:1rem;
+}
+
+.alignright{
+    float:right;
+    margin-left:1rem;
+    margin-bottom:1rem;
+}
+
+.aligncenter{
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.wp-caption{
+    max-width:100%;
+}
+
+.wp-caption img{
+    display:block;
+}
+
+.wp-caption-text{
+    text-align:center;
+}
+
+.screen-reader-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.screen-reader-text:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
