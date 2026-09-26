@@ -1,0 +1,278 @@
+@charset "UTF-8";
+
+/*---------------------------------------------------------
+ Layout
+---------------------------------------------------------*/
+
+#wrapper {
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+body.fixed-footer #wrapper {
+	height: 100%;
+	min-height: 100%;
+}
+
+header {
+	text-align: center;
+}
+
+#headbox {
+	padding: 0 10px 10px;
+	margin: 0;
+}
+
+#header-l {
+	padding-top: 0;
+}
+
+#content {
+	width: 100%;
+}
+
+.st-main {
+	padding: 20px 15px;
+	margin: 0 0 20px;
+	background: #fff;
+}
+
+.post {
+	padding-bottom: 10px;
+}
+
+section {
+	margin-bottom: 3em;
+}
+
+#side .st-aside {
+	padding: 0 15px 20px;
+}
+
+footer {
+	clear: both;
+	padding: 0;
+}
+
+#footer {
+	padding: 20px 15px;
+	text-align: center;
+}
+
+/*---------------------------------------------------------
+ Responsive Layout
+---------------------------------------------------------*/
+
+.responbox,
+.responbox30,
+.responbox40,
+.responbox50,
+.responbox60,
+.responbox70 {
+	margin-bottom: 10px;
+}
+
+.responbox .lbox {
+	margin-bottom: 10px;
+}
+
+/* 50% */
+
+.responbox50.smart50 .lbox {
+	float: left;
+	width: 49%;
+	box-sizing: border-box;
+	margin-bottom: -32768px;
+	padding-bottom: 32768px;
+}
+
+.responbox50.smart50 .rbox {
+	float: right;
+	width: 49%;
+	box-sizing: border-box;
+	margin-bottom: -32768px;
+	padding-bottom: 32768px;
+}
+
+.responbox50.smart50 {
+	overflow: hidden;
+}
+
+/*---------------------------------------------------------
+ Tablet
+---------------------------------------------------------*/
+
+@media only screen and (max-width: 959px) {
+
+	#side .st-aside {
+		clear: both;
+		float: none;
+		width: auto;
+		position: static;
+	}
+
+}
+
+/*---------------------------------------------------------
+ Tablet / PC
+---------------------------------------------------------*/
+
+@media only screen and (min-width: 600px) {
+
+	header {
+		text-align: left;
+	}
+
+	#headbox {
+		padding: 0 10px 10px;
+		margin: 0;
+		text-align: center;
+	}
+
+	#headbox img {
+		margin: 0 auto;
+	}
+
+	.sitename img {
+		max-width: 100%;
+		margin: 0;
+	}
+
+	.st-main {
+		background-color: #fff;
+		padding: 20px 30px;
+	}
+
+	.responbox .lbox img {
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	.responbox30 .lbox {
+		float: left;
+		padding-right: 15px;
+		width: 30%;
+		box-sizing: border-box;
+	}
+
+	.responbox30 .rbox {
+		float: left;
+		width: 70%;
+		box-sizing: border-box;
+	}
+
+	.responbox .lbox,
+	.responbox40 .lbox {
+		float: left;
+		padding-right: 15px;
+		width: 40%;
+		box-sizing: border-box;
+	}
+
+	.responbox .rbox,
+	.responbox40 .rbox {
+		float: left;
+		width: 60%;
+		box-sizing: border-box;
+	}
+
+	.responbox50 .lbox {
+		float: left;
+		width: 50%;
+		padding-right: 7px;
+		box-sizing: border-box;
+	}
+
+	.responbox50 .rbox {
+		float: left;
+		width: 50%;
+		padding-left: 7px;
+		box-sizing: border-box;
+	}
+
+	.responbox60 .lbox {
+		float: left;
+		width: 60%;
+		padding-right: 15px;
+		box-sizing: border-box;
+	}
+
+	.responbox60 .rbox {
+		float: left;
+		width: 40%;
+		box-sizing: border-box;
+	}
+
+	.responbox70 .lbox {
+		float: left;
+		width: 70%;
+		padding-right: 15px;
+		box-sizing: border-box;
+	}
+
+	.responbox70 .rbox {
+		float: right;
+		width: 30%;
+		box-sizing: border-box;
+	}
+
+}
+
+/*---------------------------------------------------------
+ PC Layout
+---------------------------------------------------------*/
+
+@media print, screen and (min-width: 960px) {
+
+	#wrapper {
+		overflow: visible;
+		padding: 0;
+		width: 100%;
+	}
+
+	#st-header {
+		max-width: 1060px;
+		margin: 0 auto 10px;
+	}
+
+	#content {
+		max-width: 1060px;
+		margin: 0 auto;
+	}
+
+	footer {
+		width: 100%;
+	}
+
+	#footer {
+		margin: 0 auto;
+	}
+
+	#footer-in {
+		max-width: 1060px;
+		margin: 0 auto;
+	}
+
+	#contentInner {
+		float: left;
+		width: 100%;
+		margin-right: -300px;
+	}
+
+	.st-main {
+		margin-right: 320px;
+		margin-left: 0;
+		padding: 30px 50px;
+		background-color: #fff;
+		border-radius: 4px;
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+	}
+
+	#side .st-aside {
+		float: right;
+		width: 300px;
+		padding: 0;
+	}
+
+}

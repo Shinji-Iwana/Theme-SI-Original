@@ -1,57 +1,9 @@
 @charset "UTF-8";
-/*
-Theme Name: Theme-SI-Original
-Theme URI:
-Author: S.I.
-Author URI:
-Description: 独自テーマの親テーマ（共通の土台）。ブログごとのテンプレート・機能・CSSは子テーマで加える。STINGER8（ENJI 氏）をもとに作成。
-Version: 1.0.0
-Requires at least: 7.0
-Tested up to: 7.1
-Requires PHP: 8.1
-License: GNU General Public License v2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: theme-si-original
-Tags: custom-header, custom-menu
-*/
-
-/*
- * 元のテーマ：STINGER8（Version 20171207）
- * Author: ENJI（https://wp-fun.com/）
- *
- * 以下のスタイルは STINGER8 のものを引き継いでいる（見た目を変えないため）。
- * 子テーマの style.css は、このファイルの後に読み込まれる。
- */
 
 * {
 	font-family: "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serif;
 	margin: 0px;
 	padding: 0px;
-}
-
-.st-main, 
-article, 
-.st-.st-aside, 
-header, 
-canvas, 
-details, 
-figcaption, 
-figure, footer, 
-nav, 
-section, 
-summary {
-	display: block;
-}
-
-html,
-body {
-	height: 100%;
-}
-
-body {
-	min-width: 320px;
-	word-wrap: break-word;
-	background-color: #f2f2f2;
 }
 
 body.mceContentBody {
@@ -146,6 +98,12 @@ iframe {
 	margin:10px auto;
 }
 
+/* ロゴ画像の最大サイズ */
+.sitename img {
+	max-width: 300px;
+	margin: 0 auto;
+}
+
 /* スマートフォンは表示しない */
 .smanone {
 	display: none;
@@ -212,34 +170,10 @@ code {
 /*--------------------------------
 各フォント設定
 ---------------------------------*/
-
-/*基本のフォントサイズ*/
-p, /* テキスト */
-.yellowbox, /* 黄色ボックス */
-.graybox, /* グレーボックス */
-.redbox, /* 薄赤ボックス */
-#topnews .clearfix dd p, /* 一覧文字 */
-.post ul li, /* ulリスト */
-.post ol li, /* olリスト */
-#comments #respond, /* コメント */
-#comments h4 /* コメントタイトル */
- {
-	font-size: 16px;
-	line-height: 27px;
-}
-
-/*游ゴシック*/
-.post h2,
-.post h2 span,
-.post h3,
-.post h3 span,
-.entry-title,
-.post .entry-title {
-	font-family: Helvetica , "游ゴシック" , "Yu Gothic" , sans-serif;
-}
-
 /* 基本の文字 */
 p {
+	font-size: 16px;
+	line-height: 27px;
 	margin-bottom: 20px;
 }
 
@@ -439,14 +373,14 @@ dd h3 a {
 }
 
 /* 関連記事の文字 */
-.post p.point {
+.post h4.point {
 	margin-bottom:40px;
 	position:relative;
 	border-bottom:solid 1px #f3f3f3;
 	padding:20px 15px 10px;
 	background-color:transparent;
 }
-.post p .point-in {
+.post h4 .point-in {
 	padding:3px 20px;
 	margin:0;
 	font-size:15px;
@@ -502,6 +436,48 @@ dd h3 a {
 	padding: 10px 0 0;
 }
 
+/*サムネイルなし*/
+.no-thumbitiran {
+	margin-bottom:20px;
+}
+
+.kanren .no-thumbitiran h3 {
+	margin-bottom:0px;
+	font-size:18px;
+	line-height:27px;
+	padding:0px;
+}
+
+.no-thumbitiran h3 a{
+	color: #4682b4;
+}
+
+.no-thumbitiran h5 a{
+	color: #1a1a1a;
+	text-decoration:none;
+}
+
+.no-thumbitiran h3 a:hover,
+.no-thumbitiran h5 a:hover {
+	color: #b22222;
+}
+
+.no-thumbitiran p{
+	color:#616161;
+}
+
+.no-thumbitiran .blog_info p {
+	font-size: 12px;
+	margin: 0px;
+	color: #666666;
+	line-height: 18px;
+}
+
+.no-thumbitiran .blog_info {
+	margin-bottom: 0px;
+	padding: 5px;
+}
+
 /* 引用 */
 .post blockquote {
 	background-color: #f3f3f3;
@@ -555,6 +531,8 @@ dd h3 a {
 	border:solid 1px #fffacd;
 	background-color:#ffffe0;
 	margin-bottom:20px;
+	font-size: 16px;
+	line-height: 27px;
 }
 
 .redbox {
@@ -562,6 +540,8 @@ dd h3 a {
 	border:solid 1px #ef5350;
 	background-color:#ffebee;
 	margin-bottom:20px;
+	font-size: 16px;
+	line-height: 27px;
 }
 
 .graybox {
@@ -569,6 +549,8 @@ dd h3 a {
 	border:solid 1px #ccc;
 	background-color:#f3f3f3;
 	margin-bottom:20px;
+	font-size: 16px;
+	line-height: 27px;
 }
 
 .post .yellowbox p:last-child,
@@ -684,16 +666,21 @@ dd h3 a {
 ---------------------------------*/
 
 /* フッター文字 */
-#footer .footerlogo {
+#footer h3 {
 	font-size: 22px;
 	line-height:30px;
 	margin-bottom: 10px;
-	font-weight:bold;
 }
 
 #footer p {
 	font-size: 12px;
 	margin-bottom:5px;
+}
+
+#footer h3 img {
+	max-width:300px;
+	margin:0 auto 10px;
+	text-align:center;
 }
 
 #footer a {
@@ -778,7 +765,9 @@ footer h4 a {
 
 /* 抜粋文字 */
 #topnews .clearfix dd p {
+	font-size: 16px;
 	color: #666;
+	line-height: 26px;
 }
 
 #topnews .clearfix dd h5 a {
@@ -820,7 +809,7 @@ footer h4 a {
 	margin-top:20px;
 }
 
-.st-aside .kanren {
+aside .kanren {
 	padding-top: 20px;
 	margin-top:0px;
 }
@@ -887,20 +876,12 @@ footer h4 a {
 	line-height: 18px;
 }
 
-.kanren .clearfix dd .kanren-t {
-	padding-bottom:5px;
-}
-
-.kanren .clearfix dd .kanren-t a {
+.kanren .clearfix dd h5 a {
 	color: #000;
 	text-decoration: none;
-	font-size:120%;
-	line-height: 1.5;
-	font-weight:bold;
-	padding-bottom:5px;
 }
 
-.kanren .clearfix dd .kanren-t a:hover {
+.kanren .clearfix dd h5 a:hover {
 	color: #b22222;
 }
 
@@ -908,27 +889,27 @@ footer h4 a {
 サイドバー
 ---------------------------------*/
 
-#side .st-aside ul li {
+#side aside ul li {
 	list-style-type: none;
 	margin: 0px;
 	padding: 0px;
 }
 
-#side .st-aside .children li {
+#side aside .children li {
 	padding-left: 10px;
 }
 
-#side .st-aside ul li ul li{
+#side aside ul li ul li{
 	list-style-type: none;
 	margin: 0px;
 
 }
 
-#side .st-aside .sub-menu {
+#side aside .sub-menu {
 	padding-left: 10px;
 }
 
-#side .st-aside .side-t {
+#side aside h4 {
 	font-size: 14px;
 	font-weight: bold;
 	line-height: 24px;
@@ -939,7 +920,7 @@ footer h4 a {
 	padding-left: 0px;
 }
 
-#side .st-aside #mybox ul li ul li {
+#side aside #mybox ul li ul li {
 	font-size: 14px;
 	line-height: 24px;
 }
@@ -1145,6 +1126,8 @@ img.float-right {
 }
 
 .post ul li {
+	font-size: 16px;
+	line-height: 27px;
 	padding-bottom:5px;
 }
 
@@ -1162,6 +1145,8 @@ img.float-right {
 }
 
 .post ol li {
+	font-size: 16px;
+	line-height: 27px;
 	padding-bottom:5px;
 }
 
@@ -1373,6 +1358,64 @@ nav li a:hover {
 	padding: 10px 10px 9px 10px;
 	max-width:20%;
 	box-sizing:border-box;
+}
+
+/*アコーディオンメニュー追加ボタン1*/
+#s-navi dt.trigger .op-st {
+	font-family: "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serif;
+	color: #ccc;
+	line-height:30px;
+	background:#000;
+	display:block;
+	float:right;
+	height:auto;
+	max-width:40%;
+	box-sizing:border-box;
+	overflow:hidden;
+	margin-top:-5px;
+	padding: 10px 10px 9px 10px;
+}
+
+.op-st:hover {
+	opacity:0.5;
+}
+
+.op-text,
+.op-text a {
+	font-size:13px;
+	line-height:30px;
+	vertical-align:middle;
+	margin:0 0 0 7px;
+	padding:0;
+	text-decoration:none;
+}
+
+/*アコーディオンメニュー追加ボタン2*/
+#s-navi dt.trigger .op-st2 {
+	font-family: "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serif;
+	line-height:30px;
+	color: #ccc;
+	background:#1a1a1a;
+	display:block;
+	float:right;
+	height:auto;
+	max-width:40%;
+	box-sizing:border-box;
+	overflow:hidden;
+	margin-top:-5px;
+	padding: 10px 10px 9px 10px;
+}
+
+.op-st2:hover {
+	opacity:0.5;
+}
+.op-text2,.op-text2 a {
+	font-size:13px;
+	line-height:13px;
+	vertical-align:middle;
+	margin:0 0 0 7px;
+	padding:0;
+	text-decoration:none;
 }
 
 #s-navi:after {
@@ -1598,7 +1641,7 @@ footer ul, footer ol{
 #breadcrumb,
 #breadcrumb ol {
 	margin:0;
-	padding:0 0 5px;
+	padding:0;
 }
 
 #breadcrumb ol li {
@@ -1644,11 +1687,13 @@ SNS
 }
 .sns li {
 	float:left;
+	text-align:center;
 	list-style:none;
 	width:50%;
 }
 
 .sns li a {
+	box-sizing:border-box;
 	font-size:15px;
 	position:relative;
 	display:block;
@@ -1899,6 +1944,7 @@ PAGE TOP
 }
 
 #comments #respond {
+	font-size: 16px;
 	font-weight: bold;
 	margin-bottom: 10px;
 	padding-top: 5px;
@@ -1906,6 +1952,7 @@ PAGE TOP
 	padding-bottom: 5px;
 	padding-left: 10px;
 	color: #666;
+	line-height: 26px;
 }
 
 #comments #commentform .tags {
@@ -1947,27 +1994,27 @@ ul.sub-menu {
 	display: none;
 }
 
-#comments #st-reply-title {
+#comments h3 {
 	background-image: none;
 	border: none;
 	margin-bottom: 0px;
 	padding: 0;
-	font-size:110%;
-	font-weight:bold;
 }
 
 #comments h4 {
 	background-color: transparent;
+	font-size: 16px;
+	line-height: 26px;
 	padding: 0;
 	border: none;
 	margin-bottom: 0px;
 }
 
 #comments textarea {
-	box-sizing:border-box;
 	margin-bottom: 10px;
 	width: 100%;
 	border: 1px #f2f2f2 solid;
+	box-sizing:border-box;
 }
 
 #comments input {
@@ -2032,7 +2079,7 @@ header {
 	margin:0;
 }
 
-#side .st-aside {
+#side aside {
 	padding: 0 15px 20px;;
 }
 
@@ -2050,7 +2097,7 @@ footer {
 	padding-top:0;
 }
 
-.st-main {
+main {
 	padding: 20px 15px;
 	margin: 0 0 20px;
 	background:#fff;
@@ -2089,7 +2136,7 @@ section {
 ---------------------------------------------------------------------------------------------------*/
 @media only screen and (max-width: 959px) {
 
-	#side .st-aside {
+	#side aside {
 		clear: both;
 		float: none;
 		width: auto;
@@ -2237,7 +2284,7 @@ section {
 		margin: 0;
 	}
 
-	.st-main {
+	main {
 		background-color: #fff;
 		padding: 20px 30px;
 	}
@@ -2246,20 +2293,9 @@ section {
 	/*--------------------------------
 	各フォント設定
 	---------------------------------*/
-
-	/*基本のフォントサイズ*/
-	p, /* テキスト */
-	.yellowbox, /* 黄色ボックス */
-	.graybox, /* グレーボックス */
-	.redbox, /* 薄赤ボックス */
-	.post ul li, /* ulリスト */
-	.post ol li /* olリスト */
-	 {
+	p {
 		font-size: 20px;
 		line-height: 30px;
-	}
-
-	p {
 		margin-bottom: 20px;
 	}
 
@@ -2268,15 +2304,14 @@ section {
 	}
 
 	/*記事タイトル*/
-	.entry-title,
-	.post .entry-title {
+	.entry-title {
 		font-size: 27px;
 		line-height: 40px;
 		color: #333;
 		margin-bottom: 20px;
 	}
 
-	.post .entry-title a:hover {
+	.entry-title a:hover {
 		text-decoration: underline;
 	}
 
@@ -2314,6 +2349,17 @@ section {
 	  line-height: 30px;
 	}
 
+	/*リスト */
+	.post ul li {
+		font-size: 20px;
+		line-height: 35px;
+	}
+
+	.post ol li {
+		font-size: 20px;
+		line-height: 35px;
+	}
+
 	/*トップ記事一覧*/
 	dd h3 a {
 		color: #333;
@@ -2347,13 +2393,12 @@ section {
 	}
 
 	/*サイドバー文字*/
-	#side .st-aside .menu_underh2 {
+	#side aside h4 {
 		font-size: 16px;
 		line-height: 26px;
-		font-weight:bold;
 	}
 
-	#side .st-aside #mybox ul li ul li {
+	#side aside #mybox ul li ul li {
 		font-size: 16px;
 		line-height: 26px;
 	}
@@ -2364,10 +2409,21 @@ section {
 		font-size: 18pt;line-height: 35px;
 	}
 
-	.yellowbox,
-	.redbox,
-	.graybox
-	 {
+	.yellowbox {
+		font-size: 20px;
+		line-height: 35px;
+		margin-bottom: 20px;
+	}
+
+	.redbox {
+		font-size: 30px;
+		line-height: 35px;
+		margin-bottom: 20px;
+	}
+
+	.graybox {
+		font-size: 20px;
+		line-height: 35px;
 		margin-bottom: 20px;
 	}
 
@@ -2547,16 +2603,27 @@ section {
 	メニュー
 	---------------------------------*/
 
-	#st-menubox {
-		border-top: solid 1px #E0DEDE;
-		border-bottom: solid 1px #E0DEDE;
-		margin-bottom:10px;
-	}
-
 	#st-menuwide {
+		border-radius: 1px;
+		-webkit-border-radius: 1px;
+		-moz-border-radius: 1px;
+		border: solid 1px #E0DEDE;
 		padding: 0px;
 		margin:0 auto;
 		max-width:1060px;
+
+		/*Other Browser*/
+		background: #f3f3f3;
+		/*For Old WebKit*/
+		background: -webkit-linear-gradient(
+		#fff 0%,
+		#f3f3f3 100%
+		);
+		/*For Modern Browser*/
+		background: linear-gradient(
+		#fff 0%,
+		#f3f3f3 100%
+		);
 	}
 
 	nav.smanone {
@@ -2576,7 +2643,7 @@ section {
 		width:160px;
 		height:40px;
 		text-align:center;
-		border-right:solid 1px #E0DEDE;
+		border-right:solid 1px #f3f3f3;
 		position:relative;
 	}
 
@@ -2598,15 +2665,9 @@ section {
 	}
 
 	header .smanone ul.menu li li a{
-		background:#f3f3f3; /*ドロップダウンメニューの背景色*/
-		border-top:#E0DEDE solid 1px;
-		border-left:#E0DEDE solid 1px;
-		border-right:#E0DEDE solid 1px;
+		background:#f3f3f3;
+		border-top:#ccc dotted 1px;
 		z-index:2;
-	}
-
-	header .smanone ul.menu li li:last-child a {
-		border-bottom:#E0DEDE solid 1px;
 	}
 
 	header .smanone ul.menu li a:hover{
@@ -2673,9 +2734,9 @@ section {
 	}
 
 	/*IEで要素がズレるのを対応*/
-	.ie7 .st-aside ul li, 
-	.ie8 .st-aside ul li, 
-	.ie9 .st-aside ul li {
+	.ie7 aside ul li, 
+	.ie8 aside ul li, 
+	.ie9 aside ul li {
 		display: list-item;
 		padding: 0;
 	}
@@ -2684,19 +2745,9 @@ section {
 	各フォント設定
 	---------------------------------*/
 
-	/*基本のフォントサイズ*/
-	p, /* テキスト */
-	.yellowbox, /* 黄色ボックス */
-	.graybox, /* グレーボックス */
-	.redbox, /* 薄赤ボックス */
-	.post ul li, /* ulリスト */
-	.post ol li /* olリスト */
-	 {
+	p {
 		font-size: 15px;
 		line-height: 26px;
-	}
-
-	p {
 		margin-bottom: 20px;
 	}
 
@@ -2705,9 +2756,8 @@ section {
 	}
 
 	/*記事タイトル*/
-	.entry-title,
-	.post .entry-title {
-		font-size: 30px;
+	.entry-title {
+		font-size: 27px;
 		line-height: 40px;
 		color: #333;
 		margin-bottom: 20px;
@@ -2734,6 +2784,10 @@ section {
 	}
 
 	/*小見出し*/
+	.post h3 {
+		font-size: 20px;
+		line-height: 30px;
+	}
 
 	.post h4 {
 	  background-color: #f3f3f3;
@@ -2751,6 +2805,17 @@ section {
 	  margin-bottom: 5px;
 	}
 
+	/*リスト */
+	.post ul li {
+		font-size: 15px;
+		line-height: 25px;
+	}
+
+	.post ol li {
+		font-size: 15px;
+		line-height: 25px;
+	}
+
 	/* サイドバーの見出し */
 	#side h5 {
 		font-size:16px;
@@ -2759,18 +2824,17 @@ section {
 	}
 
 	/*サイドバー*/
-	#side .st-aside .menu_underh2 {
-		font-size: 14px;
-		line-height: 24px;
-		font-weight:bold;
-	}
-
-	#side .st-aside ul li {
+	#side aside h4 {
 		font-size: 14px;
 		line-height: 24px;
 	}
 
-	#side .st-aside #mybox ul li ul li {
+	#side aside ul li {
+		font-size: 14px;
+		line-height: 24px;
+	}
+
+	#side aside #mybox ul li ul li {
 	  font-size: 14px;
 	  line-height: 24px;
 	}
@@ -2780,11 +2844,27 @@ section {
 		font-size: 18pt;line-height: 35px;
 	}
 
-	.yellowbox,
-	.redbox,
-	.graybox
-	 {
+	.yellowbox {
+		font-size: 14px;
+		line-height: 24px;
 		margin-bottom: 20px;
+	}
+
+	.redbox {
+		font-size: 14px;
+		line-height: 24px;
+		margin-bottom: 20px;
+	}
+
+	.graybox {
+		font-size: 14px;
+		line-height: 24px;
+		margin-bottom: 20px;
+	}
+
+	.h2fuu {
+		font-size: 20px;
+		line-height: 30px;
 	}
 
 	.h2fuu:after {
@@ -2862,12 +2942,16 @@ section {
 
 	#st-header {
 		max-width:1060px;
-		margin:0 auto 10px;
+		margin:0 auto;
 	}
 
 	#content {
 		max-width:1060px;
 		margin:0 auto;
+	}
+
+	#content-w{
+		padding-top:10px;
 	}
 
 	footer {
@@ -2883,11 +2967,22 @@ section {
 		margin:0 auto;
 	}
 
+	.st-eyecatch
+	{
+		margin: -30px -50px 10px;
+	}
+
+	.st-eyecatch img
+	{
+		border-radius: 4px 4px 0 0 ;
+		-webkit-border-radius: 4px 4px 0 0;
+		-moz-border-radius: 4px 4px 0 0;
+	}
+
 	/* フッター文字 */
-	#footer .footerlogo {
+	#footer h3 {
 		font-size: 16px;
 		line-height:26px;
-		font-weight:bold;
 	}
 
 
@@ -2900,7 +2995,7 @@ section {
 	}
 
 	.sns li {
-		width:25%; /* SNSボタンが4つのため（STINGER8 は6つで 33%） */
+		width:33%;
 	}
 
 	.snstext{
@@ -2918,6 +3013,11 @@ section {
 	.kanren .clearfix dd p {
 		font-size:13px;
 		line-height: 18px;
+	}
+
+	.colum1 .st-eyecatch
+	{
+		margin: -30px -70px 10px;
 	}
 
 	/*--------------------------------
@@ -3024,7 +3124,7 @@ section {
 		margin-right: -300px;
 	}
 
-	.st-main {
+	main {
 		margin-right: 320px;
 		margin-left: 0px;
 		background-color: #fff;
@@ -3034,7 +3134,7 @@ section {
 		padding: 30px 50px 30px;
 	}
 
-	#side .st-aside {
+	#side aside {
 		float: right;
 		width: 300px;
 		padding: 0px;

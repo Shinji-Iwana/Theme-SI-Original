@@ -1,0 +1,133 @@
+@charset "UTF-8";
+
+/*---------------------------------------------------------
+ Components
+---------------------------------------------------------*/
+
+/*---------------------------------------------------------
+ Box
+---------------------------------------------------------*/
+
+.yellowbox {
+	padding: 20px;
+	border: solid 1px #fffacd;
+	background-color: #ffffe0;
+	margin-bottom: 20px;
+}
+
+.redbox {
+	padding: 20px;
+	border: solid 1px #ef5350;
+	background-color: #ffebee;
+	margin-bottom: 20px;
+}
+
+.graybox {
+	padding: 20px;
+	border: solid 1px #ccc;
+	background-color: #f3f3f3;
+	margin-bottom: 20px;
+}
+
+/*---------------------------------------------------------
+ Marker
+---------------------------------------------------------*/
+
+.ymarker {
+	background: #FFF9C4;
+	padding: 0 2px;
+}
+
+.rmarker {
+	background: #ffcdd2;
+	padding: 0 2px;
+}
+
+/*---------------------------------------------------------
+ Heading Balloon
+---------------------------------------------------------*/
+
+.h2fuu {
+	position: relative;
+	background: #f3f3f3;
+	color: #1a1a1a;
+	font-size: 20px;
+	line-height: 27px;
+	margin-bottom: 20px;
+	padding: 10px 20px;
+	font-weight: bold;
+}
+
+.h2fuu:after {
+	content: '';
+	position: absolute;
+	border-top: 10px solid #f3f3f3;
+	border-right: 10px solid transparent;
+	border-left: 10px solid transparent;
+	bottom: -10px;
+	left: 30px;
+}
+
+.h2fuu:before {
+	content: '';
+	position: absolute;
+	border-top: 10px solid #f3f3f3;
+	border-right: 10px solid transparent;
+	border-left: 10px solid transparent;
+	bottom: -10px;
+	left: 30px;
+}
+
+/*---------------------------------------------------------
+ Quote
+---------------------------------------------------------*/
+
+.inyoumodoki {
+	background-color: #f3f3f3;
+	background-image: url(images/quote.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	padding: 50px 20px 20px;
+	margin: 20px 0;
+	border-left: 1px solid #ccc;
+}
+
+/*---------------------------------------------------------
+ Reference Label
+---------------------------------------------------------*/
+
+.sankou {
+	font-size: 11px;
+	background-color: #F57C00;
+	color: #fff;
+	padding: 2px 3px;
+	margin: 0 5px;
+}
+
+/*---------------------------------------------------------
+ Divider
+---------------------------------------------------------*/
+
+.dotline {
+	border-bottom: 1px dotted #212121;
+}
+
+.dotliner {
+	border-bottom: 1px dotted #ff0000;
+}
+
+.dotline-s {
+	border-bottom: 1px solid #212121;
+}
+
+.dotline-sr {
+	border-bottom: 1px solid #ff0000;
+}
+
+/*---------------------------------------------------------
+ Rounded Image
+---------------------------------------------------------*/
+
+.kadomaru img {
+	border-radius: 100px;
+}
