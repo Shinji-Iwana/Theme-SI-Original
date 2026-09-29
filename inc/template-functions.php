@@ -176,3 +176,94 @@ if (!function_exists('st_first_category_id')) {
         return $categories !== [] ? (int) $categories[0]->term_id : 0;
     }
 }
+
+if (!function_exists('st_breadcrumb_items')) {
+    /**
+     * パンくずリストの項目（HOME から今のページまで）
+     *
+     * 最後の項目（今のページ）は URL なし。子テーマは、フィルター st_breadcrumb_items で項目を変えられる
+     * （category_id・page_id は、置き換えの目印。表示には使わない）。
+     *
+     * @return list<array{name: string, url: ?string, category_id?: int, page_id?: int}>
+     */
+    function st_breadcrumb_items(): array
+    {
+        $items = [['name' => 'HOME', 'url' => home_url('/')]];
+
+        if (is_single() && !is_attachment()) {
+            foreach (st_breadcrumb_categories(st_first_category_id()) as $categoryId) {
+                $items[] = ['name' => get_cat_name($categoryId), 'url' => get_category_link($categoryId), 'category_id' => $categoryId];
+            }
+            $items[] = ['name' => get_the_title(get_queried_object_id()), 'url' => null];
+        } elseif (is_page() && !is_front_page()) {
+            $pageId = get_queried_object_id();
+            foreach (array_reverse(get_post_ancestors($pageId)) as $ancestorId) {
+                $items[] = ['name' => get_the_title($ancestorId), 'url' => get_page_link($ancestorId), 'page_id' => (int) $ancestorId];
+            }
+            $items[] = ['name' => get_the_title($pageId), 'url' => null, 'page_id' => $pageId];
+        } elseif (is_category()) {
+            foreach (st_breadcrumb_categories((int) get_query_var('cat')) as $categoryId) {
+                $items[] = ['name' => get_cat_name($categoryId), 'url' => get_category_link($categoryId), 'category_id' => $categoryId];
+            }
+        } elseif (is_tag()) {
+            $items[] = ['name' => single_tag_title('', false), 'url' => null];
+        } elseif (is_author()) {
+            $items[] = ['name' => get_the_author_meta('display_name', (int) get_query_var('author')), 'url' => null];
+        } elseif (is_attachment()) {
+            $attachment = get_queried_object();
+            if ($attachment instanceof WP_Post && $attachment->post_parent != 0) {
+                $items[] = ['name' => get_the_title($attachment->post_parent), 'url' => get_permalink($attachment->post_parent)];
+            }
+            $items[] = ['name' => $attachment instanceof WP_Post ? $attachment->post_title : '', 'url' => null];
+        } elseif (is_date()) {
+            $year = (int) get_query_var('year');
+            $month = (int) get_query_var('monthnum');
+            $items[] = ['name' => "{$year}年", 'url' => get_year_link($year)];
+            if (is_month() || is_day()) {
+                $items[] = ['name' => "{$month}月", 'url' => get_month_link($year, $month)];
+            }
+            if (is_day()) {
+                $items[] = ['name' => (int) get_query_var('day') . '日', 'url' => null];
+            }
+        } elseif (is_search()) {
+            $items[] = ['name' => '「' . get_search_query() . '」の検索結果', 'url' => null];
+        }
+
+        $items = apply_filters('st_breadcrumb_items', $items);
+
+        // 最後の項目（今のページ）は、リンクにしない
+        $last = count($items) - 1;
+        if ($last > 0) {
+            $items[$last]['url'] = null;
+        }
+
+        return $items;
+    }
+}
+
+if (!function_exists('st_breadcrumb')) {
+    /**
+     * パンくずリスト（schema.org の BreadcrumbList。区切りの「>」は項目の間だけ）
+     */
+    function st_breadcrumb(): void
+    {
+        $items = st_breadcrumb_items();
+        if (count($items) < 2) {
+            return;
+        }
+
+        echo '<section id="breadcrumb"><ol itemscope itemtype="https://schema.org/BreadcrumbList">';
+        foreach ($items as $index => $item) {
+            echo '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">';
+            if ($index > 0) {
+                echo '<span class="breadcrumb-sep" aria-hidden="true">&gt;</span> ';
+            }
+            $name = '<span itemprop="name">' . esc_html($item['name']) . '</span>';
+            echo $item['url'] !== null
+                ? '<a href="' . esc_url($item['url']) . '" itemprop="item">' . $name . '</a>'
+                : $name;
+            echo '<meta itemprop="position" content="' . ($index + 1) . '" /></li> ';
+        }
+        echo '</ol></section>';
+    }
+}
