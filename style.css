@@ -5,7 +5,7 @@ Theme URI:
 Author: S.I.
 Author URI:
 Description: 独自テーマの親テーマ（共通の土台）。ブログごとのテンプレート・機能・CSSは子テーマで加える。STINGER8（ENJI 氏）をもとに作成。
-Version: 1.1.0
+Version: 1.2.0
 Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 8.1
@@ -486,7 +486,7 @@ dd h3 a {
 .blogbox p {
 	font-size: 12px;
 	margin: 0px;
-	color: #bdbdbd;
+	color: #666; /* 背景との明るさの差（コントラスト比 4.5:1 以上。白で約5.7:1、薄い灰色で約5.1:1。PageSpeed Insights の color-contrast） */
 	line-height: 18px;
 }
 
@@ -1602,7 +1602,7 @@ footer ul, footer ol{
 }
 
 #breadcrumb ol li {
-	color: #ccc;
+	color: #666; /* 背景との明るさの差（コントラスト比 4.5:1 以上。白で約5.7:1、薄い灰色で約5.1:1。PageSpeed Insights の color-contrast） */
 	font-size: 13px;
 	list-style:none;
 	display: inline-block;
@@ -1610,7 +1610,7 @@ footer ul, footer ol{
 
 #breadcrumb ol li a {
 	text-decoration: none;
-	color: #ccc;
+	color: #666; /* 背景との明るさの差（コントラスト比 4.5:1 以上。白で約5.7:1、薄い灰色で約5.1:1。PageSpeed Insights の color-contrast） */
 }
 
 /*--------------------------------
@@ -3041,4 +3041,15 @@ section {
 	}
 
 	/*-- ここまで --*/
+}
+
+/*--------------------------------
+ユーザー補助（PageSpeed Insights の target-size）：サイドバーのウィジェットの一覧（月別アーカイブ・カテゴリなど）のリンクは、
+携帯で押しやすいよう、押せる高さを 24px 以上にし、上下に間隔をあける
+---------------------------------*/
+#side .ad ul li a {
+	display: inline-block;
+	min-height: 24px;
+	padding: 4px 0;
+	line-height: 24px;
 }

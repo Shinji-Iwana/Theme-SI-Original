@@ -2,7 +2,7 @@
 
 <div id="content" class="clearfix">
 	<div id="contentInner">
-		<div class="st-main">
+		<main class="st-main"><?php // メインのランドマーク（ユーザー補助。PageSpeed Insights の landmark-one-main） ?>
 			<article>
 				<div class="st-aside">
 					<?php get_template_part( 'itiran' ); ?>
@@ -12,7 +12,7 @@
 					<?php get_template_part( 'sns-top' ); //ソーシャルボタン読み込み ?>
 
 			</article>
-		</div>
+		</main><!-- /st-main -->
 	</div>
 	<!-- /#contentInner -->
 	<?php get_sidebar(); ?>
