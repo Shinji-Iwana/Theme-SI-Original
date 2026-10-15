@@ -5,7 +5,7 @@ Theme URI:
 Author: S.I.
 Author URI:
 Description: 独自テーマの親テーマ（共通の土台）。ブログごとのテンプレート・機能・CSSは子テーマで加える。STINGER8（ENJI 氏）をもとに作成。
-Version: 1.2.0
+Version: 1.2.1
 Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 8.1
@@ -79,7 +79,7 @@ hr.hrcss {
 
 /* リンクの色 */
 a {
-	color: #4682b4;
+	color: #376891; /* 背景との明るさの差（コントラスト比 4.5:1 以上。白で約5.9:1、薄い灰色で約5.3:1。PageSpeed Insights の color-contrast） */
 }
 
 /* リンクにマウスオーバーした時の色 */
@@ -408,7 +408,7 @@ dd h3 a {
 .wp-caption-text a, 
 .wp-caption-text {
 	font-size: 12px;
-	color: #ccc;
+	color: #666; /* コントラスト比 4.5:1 以上（PageSpeed Insights の color-contrast） */
 }
 
 /*NEWENTRY及び関連記事テキスト*/
@@ -498,7 +498,7 @@ dd h3 a {
 /*投稿タグ*/
 .tagst {
 	font-size:13px;
-	color:#ccc;
+	color:#666; /* コントラスト比 4.5:1 以上（PageSpeed Insights の color-contrast） */
 	padding: 10px 0 0;
 }
 
@@ -708,15 +708,15 @@ dd h3 a {
 #footer .copy, 
 #footer .rcopy {
 	font-size: 12px;
-	color: #999;
+	color: #666; /* コントラスト比 4.5:1 以上（PageSpeed Insights の color-contrast） */
 	line-height: 18px;
 	padding:20px 10px 0;
 }
 
-#footer .copy a, 
+#footer .copy a,
 #footer .rcopy a {
 	font-size: 12px;
-	color: #999;
+	color: #666;
 	line-height: 18px;
 }
 
@@ -1506,7 +1506,7 @@ footer .footermenust li:last-child {
 	padding:0px;
 	margin:0px;
 	font-size:12px;
-	color:#757575;
+	color:#666; /* コントラスト比 4.5:1 以上（PageSpeed Insights の color-contrast） */
 }
 
 footer ul, footer ol{
@@ -1577,18 +1577,18 @@ footer ul, footer ol{
 	text-decoration: none;
 	width: auto;
 	color: #fff;
-	background-color: #999;
+	background-color: #666; /* 白い文字とのコントラスト比 4.5:1 以上（PageSpeed Insights の color-contrast） */
 }
 
 .pagination a:hover {
 	color: #fff;
-	background-color: #666666;
+	background-color: #444;
 }
 
 .pagination .current {
 	padding: 6px 9px 5px 9px;
 	color: #fff;
-	background-color: #CCCCCC;
+	background-color: #376891;
 }
 
 /*--------------------------------
@@ -1667,16 +1667,16 @@ SNS
 .sns li a:hover {
 }
 
-/* ツイッター */
+/* ツイッター（SNS のボタンの背景は、白い文字とのコントラスト比 4.5:1 以上。PageSpeed Insights の color-contrast） */
 .sns .twitter a {
-	background:#55acee;
+	background:#1a6fb0;
 }
 .sns .twitter a:hover {
-	background:#4892cb;
+	background:#155a90;
 }
 
 .sns .fa-twitter {
-	border-right:1px solid #9ACFF4;
+	border-right:1px solid #6a9cc9;
 	padding-right:15px;
 }
 
@@ -1708,28 +1708,28 @@ SNS
 
 /* はてぶ */
 .sns .hatebu a {
-	background:#00a5de;
+	background:#0076a8;
 }
 
 .sns .hatebu a:hover {
-	background:#008cbd;
+	background:#005f87;
 }
 
 .sns .fa-hatena {
-	border-right:1px solid #48B6DB;
+	border-right:1px solid #4d9cc0;
 	padding-right:15px;
 }
 
 /* LINE */
 .sns .line a {
-	background:#25af00;
+	background:#1e7b00;
 }
 .sns .line a:hover {
-	background:#219900;
+	background:#176200;
 }
 
 .sns .fa-comment {
-	border-right:1px solid #29c200;
+	border-right:1px solid #5fa34a;
 	padding-right:15px;
 }
 
