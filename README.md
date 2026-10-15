@@ -82,11 +82,12 @@ PageSpeed Insights のユーザー補助の項目に合わせて、次のよう�
 
 ## 表示の速さ（PageSpeed Insights）
 
-PageSpeed Insights の「レンダリングを妨げるリクエスト」「フォントの表示」に合わせて、次のようにしている（1.2.2）。
+PageSpeed Insights の「レンダリングを妨げるリクエスト」「フォントの表示」「LCP」に合わせて、次のようにしている（1.2.2〜1.2.3）。
 
 * jQuery（jquery-migrate を含む）は、`<head>` ではなくページの最後で読み込む。jQuery を使うのは、ページの最後で読み込む `js/base.js`・`js/scroll.js` とプラグインだけ。本文の中に jQuery を使うスクリプトを書くと動かないので、書かないこと。
 * Font Awesome の `@font-face` に `font-display: swap` を足した（`css/fontawesome/css/font-awesome.min.css`。Font Awesome を入れ替えるときは、足し直す）。バージョンは、ファイルの更新日時にした。
 * 最初の表示に要らない CSS は、フィルター `st_non_blocking_styles` にハンドル名を足すと、表示を止めずに読み込む（`media="print"` で読み込み、読み込み終わったら全部の画面に効かせる）。親テーマでは何も足していない（Font Awesome は、メニューのボタンや日付のアイコンが後から現れて表示がずれるため、足さない）。
+* トップページのヘッダー画像は、`the_header_image_tag()` で出す。画面の幅に合う大きさの画像を選ばせ（srcset）、他の画像より先に読み込む（`fetchpriority="high"`）。トップページで一番大きく表示される画像（LCP）のため（1.2.3）。
 
 ## ライセンス
 

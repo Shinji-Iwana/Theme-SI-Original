@@ -53,7 +53,11 @@
 							<?php if ( get_header_image() && is_front_page() ) : // カスタムヘッダー ?>
 							<div id="st-headerbox">
 								<div id="st-header">
-									<img src="<?php header_image(); ?>" height="<?php echo esc_attr( (string) get_custom_header()->height ); ?>" width="<?php echo esc_attr( (string) get_custom_header()->width ); ?>" alt="" />
+									<?php
+									// トップページで一番大きく表示される画像（PageSpeed Insights の LCP）。
+									// 画面の幅に合う大きさの画像を選ばせ（srcset）、他の画像より先に読み込む（fetchpriority）
+									the_header_image_tag( array( 'alt' => '', 'fetchpriority' => 'high', 'loading' => false, 'decoding' => 'async' ) );
+									?>
 								</div>
 							</div>
 							<?php endif; ?>
