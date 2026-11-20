@@ -5,7 +5,7 @@ Theme URI:
 Author: S.I.
 Author URI:
 Description: 独自テーマの親テーマ（共通の土台）。ブログごとのテンプレート・機能・CSSは子テーマで加える。STINGER8（ENJI 氏）をもとに作成。
-Version: 1.2.5
+Version: 1.2.6
 Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 8.1
@@ -1811,13 +1811,19 @@ PAGE TOP
 	padding: 12px 16px;
 	text-align: center;
 	display: block;
-	opacity: 0.85;
+	opacity: 0.7;
 }
 
 #page-top a:hover {
 	text-decoration: none;
 	color: #fff;
-	opacity: 1;
+}
+
+/* マウスを乗せたときだけ濃くする（マウスのある端末だけ。スマホでは、一度押すと :hover のままになり、濃いまま残るため。1.2.6） */
+@media (hover: hover) {
+	#page-top a:hover {
+		opacity: 1;
+	}
 }
 
 /*--------------------------------
