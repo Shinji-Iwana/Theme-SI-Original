@@ -22,7 +22,8 @@ $title_encode = rawurlencode( get_bloginfo( 'name' ) );
 
 		<!--はてブボタン-->
 		<li class="hatebu">
-			<a href="https://b.hatena.ne.jp/entry/<?php echo esc_attr( home_url( '/' ) ); ?>" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"><span style="font-weight:bold" class="fa-hatena">B!</span><span class="snstext">はてブ</span></a><script src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+			<?php // はてなのスクリプト（15KB）は読み込まず、ほかのボタンと同じく、押すとはてなブックマークの追加の画面を開くリンクにする（1.2.4） ?>
+			<a href="https://b.hatena.ne.jp/add?mode=confirm&amp;url=<?php echo esc_attr( $url_encode ); ?>&amp;title=<?php echo esc_attr( $title_encode ); ?>" target="_blank" rel="noopener"><span style="font-weight:bold" class="fa-hatena">B!</span><span class="snstext">はてブ</span></a>
 		</li>
 
 		<!--LINEボタン-->

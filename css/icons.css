@@ -1,0 +1,48 @@
+/*
+ * アイコン（Font Awesome 4 の代わり）
+ *
+ * Font Awesome（CSS 7KB・フォント 70KB）は、全部のアイコンを読み込むが、使っているのは十数個だけだったため、
+ * 使うアイコンだけを SVG で描き、<head> に直接書く（読み込みの待ちをなくす。PageSpeed Insights の「レンダリングを妨げるリクエスト」）。
+ * 書き方（<i class="fa fa-tags"></i>）は Font Awesome のまま使える。base.js が足すアイコン（見出しの印・メニューの開閉）も同じ。
+ * アイコンは ::before に描き、文字の色（currentColor）で塗る。要素そのもの（余白・区切りの線）は今までどおり。
+ */
+.fa {
+	display: inline-block;
+	line-height: 1;
+	font-style: normal;
+}
+.fa::before {
+	content: "";
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	vertical-align: -0.125em;
+	background-color: currentColor;
+	-webkit-mask: var(--fa-icon) center / contain no-repeat;
+	mask: var(--fa-icon) center / contain no-repeat;
+}
+
+/* 矢印 */
+.fa-angle-up { --fa-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 15l6-6 6 6'/%3E%3C/svg%3E"); }
+.fa-angle-down { --fa-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); }
+.fa-angle-right { --fa-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 6l6 6-6 6'/%3E%3C/svg%3E"); }
+
+/* メニュー（三本線） */
+.fa-bars { --fa-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M4 6h16M4 12h16M4 18h16'/%3E%3C/svg%3E"); }
+
+/* 記事の情報（日付・カテゴリ・タグ） */
+.fa-clock-o { --fa-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E"); }
+.fa-folder-open-o { --fa-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linejoin='round'%3E%3Cpath d='M3 6h6l2 2h9v11H3z'/%3E%3Cpath d='M3 11h17'/%3E%3C/svg%3E"); }
+.fa-tags { --fa-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linejoin='round'%3E%3Cpath d='M3 3h8l10 10-8 8L3 11z'/%3E%3Ccircle cx='7.5' cy='7.5' r='1.5'/%3E%3C/svg%3E"); }
+
+/* 共有ボタン */
+.fa-twitter { --fa-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M5 4l14 16M19 4L5 20'/%3E%3C/svg%3E"); }
+.fa-facebook { --fa-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M15 3h-1.5A3.5 3.5 0 0 0 10 6.5V21M7 10h8'/%3E%3C/svg%3E"); }
+.fa-comment { --fa-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3E%3Cpath d='M4 4h16a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H10l-5 4v-4H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z'/%3E%3C/svg%3E"); }
+
+/* 見出し・段落の印（base.js が足す） */
+.fa-question-circle { --fa-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='9.5'/%3E%3Cpath d='M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6M12 17.2v.3'/%3E%3C/svg%3E"); }
+.fa-check-circle { --fa-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9.5'/%3E%3Cpath d='M7.5 12.5l3 3 6-6.5'/%3E%3C/svg%3E"); }
+.fa-exclamation-triangle { --fa-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3L2 20h20z'/%3E%3Cpath d='M12 10v4.5M12 17.2v.3'/%3E%3C/svg%3E"); }
+.fa-pencil-square-o { --fa-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linejoin='round'%3E%3Cpath d='M11 4H4v16h16v-7'/%3E%3Cpath d='M18 3l3 3-9 9H9v-3z'/%3E%3C/svg%3E"); }
+.fa-user { --fa-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3E%3Ccircle cx='12' cy='8' r='4.5'/%3E%3Cpath d='M3.5 21c0-4.5 3.8-7 8.5-7s8.5 2.5 8.5 7z'/%3E%3C/svg%3E"); }

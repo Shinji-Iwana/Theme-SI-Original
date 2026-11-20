@@ -1205,8 +1205,7 @@ img.float-right {
 }
 
 .post .maruck ul li:before {
-	content: " \f00c";
-	font-family: FontAwesome;
+	content: "\2713";
 	border-radius: 50%;
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;

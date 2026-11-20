@@ -21,6 +21,19 @@ if (!function_exists('st_asset_version')) {
     }
 }
 
+if (!function_exists('st_inline_css')) {
+    /**
+     * <head> に直接書く CSS の中身（コメントと余分な空白を除く。ファイルがなければ空）
+     */
+    function st_inline_css(string $path): string
+    {
+        $css = is_file($path) ? (string) file_get_contents($path) : '';
+        $css = (string) preg_replace('#/\*.*?\*/#s', '', $css);
+
+        return trim((string) preg_replace('/\s+/', ' ', $css));
+    }
+}
+
 if (!function_exists('st_enqueue_scripts')) {
     /**
      * JavaScript
@@ -63,12 +76,14 @@ if (!function_exists('st_enqueue_styles')) {
         $dir = get_template_directory();
         $uri = get_template_directory_uri();
 
-        wp_register_style('normalize', $uri . '/css/normalize.css', [], '1.5.9');
-        // Font Awesome 4.6.3。@font-face に font-display: swap を足している（文字を先に表示する。PageSpeed Insights の「フォントの表示」）
-        wp_register_style('font-awesome', $uri . '/css/fontawesome/css/font-awesome.min.css', ['normalize'], st_asset_version($dir . '/css/fontawesome/css/font-awesome.min.css'));
+        // normalize.css（約2KB）とアイコン（Font Awesome の代わり。css/icons.css）は、ファイルを読み込まずに <head> に直接書く。
+        // 小さな CSS のために読み込みを待つと、そのあいだ表示が止まるため（PageSpeed Insights の「レンダリングを妨げるリクエスト」）。
+        // Font Awesome（CSS 7KB・フォント 70KB）は、使っているアイコンが十数個だけだったため、やめた
+        wp_register_style('normalize', false, [], null);
+        wp_add_inline_style('normalize', st_inline_css($dir . '/css/normalize.css') . "\n" . st_inline_css($dir . '/css/icons.css'));
 
         // 親テーマの style.css
-        wp_enqueue_style('st-style', $uri . '/style.css', ['normalize', 'font-awesome'], st_asset_version($dir . '/style.css'));
+        wp_enqueue_style('st-style', $uri . '/style.css', ['normalize'], st_asset_version($dir . '/style.css'));
     }
 }
 add_action('wp_enqueue_scripts', 'st_enqueue_styles');
